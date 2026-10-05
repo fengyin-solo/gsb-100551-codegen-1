@@ -244,3 +244,15 @@ class ReportEntry(BaseModel):
     field_5: str | None = None  # 设备可利用率
     field_6: str | None = None  # 故障停机时间
     field_7: str | None = None  # 月报状态
+
+class QualificationEntry(BaseModel):
+    """人员资质档案明细结构。"""
+
+    field_0: str | None = None  # 档案编号
+    field_1: str | None = None  # 姓名
+    field_2: str | None = None  # 所属队组
+    field_3: str | None = None  # 证书类别
+    field_4: str | None = None  # 证书编号
+    field_5: str | None = None  # 证书有效期至
+    field_6: str | None = None  # 入场日期
+    field_7: str | None = None  # 备案时间

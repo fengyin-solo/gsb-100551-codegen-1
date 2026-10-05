@@ -19,6 +19,7 @@ const Dispatch = () => import('@/views/dispatch/index.vue')
 const Safety = () => import('@/views/safety/index.vue')
 const Contract = () => import('@/views/contract/index.vue')
 const Report = () => import('@/views/report/index.vue')
+const Qualification = () => import('@/views/qualification/index.vue')
 
 const router = createRouter({
   history: createWebHistory(),
@@ -42,6 +43,7 @@ const router = createRouter({
     { path: '/safety', name: 'safety', component: Safety },
     { path: '/contract', name: 'contract', component: Contract },
     { path: '/report', name: 'report', component: Report },
+    { path: '/qualification', name: 'qualification', component: Qualification },
   ],
 })
 

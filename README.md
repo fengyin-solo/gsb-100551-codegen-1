@@ -67,6 +67,7 @@ npm run dev
 | 安全措施 | `safety` | 安全措施票 | 措施编号、措施类型、涉及设备 |
 | 运维合同 | `contract` | 运维合同 | 合同编号、合同名称、签约甲方 |
 | 运行月报 | `report` | 运行月报 | 月报编号、统计月份、发电量 |
+| 人员资质 | `qualification` | 人员资质档案 | 档案编号、姓名、所属队组、证书类别 |
 
 ## 约定
 
@@ -74,3 +75,6 @@ npm run dev
   `backend/app/routers/<模块>.py`，业务规则在 `backend/app/services/<模块>.py`。
 - 列表接口统一返回 `{ items, total, page, size }`，动作接口统一返回 `{ ok, message }`。
 - 状态流转只允许在 `app/services` 里改，路由层不做业务判断。
+- 人员资质模块（`qualification`、`qualification_todo`）数据落盘到 `backend/data/`，
+  重启后读回同一份；该目录已在 `.gitignore` 中，删除后下次启动会重新生成种子数据。
+  写操作按队组归属判定权限：操作队组与档案所属队组不一致时返回 403 并写清缺哪一项授权。
