@@ -26,6 +26,7 @@ class EntryPayload(BaseModel):
 
     values: dict[str, Any] = Field(default_factory=dict)
     remark: str | None = None
+    operator_team: str | None = None  # 提交人当前队组：写操作按它判定队组归属
 
 
 

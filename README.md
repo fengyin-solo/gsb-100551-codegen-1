@@ -65,6 +65,7 @@ npm run dev
 | 告警事件 | `alarm` | 告警事件 | 告警编号、告警来源、告警类型 |
 | 调度指令 | `dispatch` | 调度指令单 | 指令编号、下发单位、指令类型 |
 | 安全措施 | `safety` | 安全措施票 | 措施编号、措施类型、涉及设备 |
+| 人员资质 | `qualification` | 人员资质档案 | 姓名、所属队组、证书类别、证书有效期 |
 | 运维合同 | `contract` | 运维合同 | 合同编号、合同名称、签约甲方 |
 | 运行月报 | `report` | 运行月报 | 月报编号、统计月份、发电量 |
 
@@ -74,3 +75,8 @@ npm run dev
   `backend/app/routers/<模块>.py`，业务规则在 `backend/app/services/<模块>.py`。
 - 列表接口统一返回 `{ items, total, page, size }`，动作接口统一返回 `{ ok, message }`。
 - 状态流转只允许在 `app/services` 里改，路由层不做业务判断。
+- 人员资质模块（`qualification`）与其余模块的内存仓库不同：数据落在
+  `backend/data/qualification.db`（SQLite，已加入 `.gitignore`），重启后仍是同一份。
+  老记录按入场日期回填备案日期，过往证书沿用原有有效期。写操作按提交人当前队组
+  判定归属（请求体 `operator_team` 字段），跨队组只读，越权提交返回 403 并写清
+  缺哪一项授权。
